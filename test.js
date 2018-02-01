@@ -2,7 +2,6 @@
 
 const test = require('tape');
 const httpMocks = require('node-mocks-http');
-const merge = require('lodash').merge;
 const sinon = require('sinon');
 
 const shopifyExpressEasdkSession = require('.');
@@ -20,9 +19,11 @@ test(t => {
 
   sinon.spy(res, 'cookie');
 
-  const middleware = shopifyExpressEasdkSession({shopifyClientSecret: 'hush'});
+  const middleware = shopifyExpressEasdkSession({
+    shopifyClientSecret: 'hush'
+  });
 
-  middleware(req, res, (err) => {
+  middleware(req, res, err => {
     t.notOk(err);
 
     t.equals(req.authenticatedShopName, undefined);
@@ -47,9 +48,11 @@ test(t => {
 
   sinon.spy(res, 'cookie');
 
-  const middleware = shopifyExpressEasdkSession({shopifyClientSecret: 'hush'});
+  const middleware = shopifyExpressEasdkSession({
+    shopifyClientSecret: 'hush'
+  });
 
-  middleware(req, res, (err) => {
+  middleware(req, res, err => {
     t.notOk(err);
 
     t.equals(req.authenticatedShopName, undefined);
@@ -79,13 +82,17 @@ test(t => {
 
   sinon.spy(res, 'cookie');
 
-  const middleware = shopifyExpressEasdkSession({shopifyClientSecret: 'hush'});
+  const middleware = shopifyExpressEasdkSession({
+    shopifyClientSecret: 'hush'
+  });
 
-  middleware(req, res, (err) => {
+  middleware(req, res, err => {
     t.notOk(err);
 
     t.equals(req.authenticatedShopName, 'some-shop.myshopify.com');
-    t.ok(res.cookie.calledWith('shopifySession', 'some-shop.myshopify.com'));
+    t.ok(
+      res.cookie.calledWith('shopify-app-session', 'some-shop.myshopify.com')
+    );
 
     t.end();
   });
@@ -103,19 +110,23 @@ test(t => {
   const res = httpMocks.createResponse();
 
   req.signedCookies = {
-    shopifySession: 'some-shop.myshopify.com'
+    'shopify-app-session': 'some-shop.myshopify.com'
   };
 
   sinon.spy(res, 'cookie');
 
-  const middleware = shopifyExpressEasdkSession({shopifyClientSecret: 'hush'});
+  const middleware = shopifyExpressEasdkSession({
+    shopifyClientSecret: 'hush'
+  });
 
-  middleware(req, res, (err) => {
+  middleware(req, res, err => {
     t.notOk(err);
 
     t.equals(req.authenticatedShopName, 'some-shop.myshopify.com');
 
-    t.ok(res.cookie.calledWith('shopifySession', 'some-shop.myshopify.com'));
+    t.ok(
+      res.cookie.calledWith('shopify-app-session', 'some-shop.myshopify.com')
+    );
 
     t.end();
   });
@@ -133,7 +144,7 @@ test(t => {
   const res = httpMocks.createResponse();
 
   req.signedCookies = {
-    shopifySession: 'fancy-widgets.myshopify.com'
+    'shopify-app-session': 'fancy-widgets.myshopify.com'
   };
 
   req.query = {
@@ -145,13 +156,17 @@ test(t => {
 
   sinon.spy(res, 'cookie');
 
-  const middleware = shopifyExpressEasdkSession({shopifyClientSecret: 'hush'});
+  const middleware = shopifyExpressEasdkSession({
+    shopifyClientSecret: 'hush'
+  });
 
-  middleware(req, res, (err) => {
+  middleware(req, res, err => {
     t.notOk(err);
 
     t.equals(req.authenticatedShopName, 'some-shop.myshopify.com');
-    t.ok(res.cookie.calledWith('shopifySession', 'some-shop.myshopify.com'));
+    t.ok(
+      res.cookie.calledWith('shopify-app-session', 'some-shop.myshopify.com')
+    );
 
     t.end();
   });
