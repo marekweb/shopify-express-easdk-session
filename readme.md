@@ -1,5 +1,7 @@
 # Shopify Express EASDK Session middleware
 
+![npm](https://img.shields.io/npm/v/shopify-express-easdk-session.svg?maxAge=259200) ![travis](https://travis-ci.org/marekweb/shopify-express-easdk-session.svg?branch=master) ![node](https://img.shields.io/badge/node-%3E=8.1-blue.svg)
+
 A small Express middleware for authenticating Shopify EASDK sessions. When a shop is authenticated, the shop's hostname is available at `req.authenticatedShopName`.
 
 The module authenticates the user by reading the query string which is provided by the EASDK iframe and verifies its HMAC signature. The session is then stored in a signed cookie to make it available on subsequent requests. No database is necessary.

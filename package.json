@@ -21,5 +21,8 @@
   "dependencies": {
     "lodash.get": "^4.4.2",
     "shopify-verify-params": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=8.1.0"
   }
 }
