@@ -11,12 +11,12 @@
   "author": "Marek Zaluski <marekz@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "express": "^4.16.2",
+    "express": "^4.16.3",
     "node-mocks-http": "^1.6.6",
-    "prettier": "^1.10.2",
-    "sinon": "^4.2.2",
-    "tap": "^11.1.0",
-    "tape": "^4.8.0"
+    "prettier": "^1.12.1",
+    "sinon": "^5.0.7",
+    "tap": "^11.1.5",
+    "tape": "^4.9.0"
   },
   "dependencies": {
     "lodash.get": "^4.4.2",
