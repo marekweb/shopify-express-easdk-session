@@ -1,7 +1,7 @@
 {
   "name": "shopify-express-easdk-session",
   "repository": "marekweb/shopify-express-easdk-session",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "",
   "main": "index.js",
   "scripts": {
